@@ -34,3 +34,38 @@ h4 {
 h5 {
   font-size: 1.875rem;
 }
+p {
+  font-size: 1.5rem;
+}
+
+/* Utility */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.j-align {
+  justify-content: center;
+}
+
+.t-mid {
+  font-size: 1.25rem;
+}
+.t-sm {
+  font-size: 0.875rem;
+}
+
+.w-100 {
+  width: 100%;
+}
