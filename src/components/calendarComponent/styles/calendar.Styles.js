@@ -121,6 +121,7 @@ export const DayContainer = styled.div`
 
   .day {
     margin: 0.5625rem 0.5rem;
+    padding-bottom: 25px;
     text-align: right;
   }
 
