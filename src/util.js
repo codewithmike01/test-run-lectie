@@ -1,5 +1,19 @@
 import dayjs from 'dayjs';
 
+// Util Function
+const getSuffix = (daySuf) => {
+  switch (daySuf) {
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
+  }
+};
+
 export const getMonth = (month = dayjs().month()) => {
   const year = dayjs().year();
   const firstDayOfMonth = dayjs(new Date(year, month, 1)).day();
@@ -13,3 +27,19 @@ export const getMonth = (month = dayjs().month()) => {
   });
   return daysMatrix;
 };
+
+export const getTodayDate = () => {
+  const date = new Date().toISOString().slice(0, 10);
+  const day = date.split('-')[2];
+  const monthNumber = dayjs().month();
+  const yearMonth = dayjs(new Date(dayjs().year(), monthNumber))
+    .format('YYYY MMMM')
+    .split(' ')
+    .reverse()
+    .join(' ');
+  const daySplit = day.split('')[day.length - 1];
+  const nth = getSuffix(daySplit);
+  return `${day}${nth} ${yearMonth}`;
+};
+
+getTodayDate();

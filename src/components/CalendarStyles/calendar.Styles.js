@@ -12,7 +12,8 @@ export const CalendarMainConatiner = styled.div`
 export const CalendarWrapper = styled.div`
   display: flex;
   flex: 1;
-  gap: 11.5rem;
+  gap: 3rem;
+  justify-content: space-between;
   width: 93%;
   margin: 0 auto;
 
@@ -29,10 +30,9 @@ export const CalendarWrapper = styled.div`
   .month-inc-dec {
     padding-top: 10px;
     width: 100%;
-    max-width: 15rem;
+    max-width: 12rem;
     margin: 0 auto;
     margin-bottom: 2.25rem;
-    gap: 0.9rem;
     justify-content: space-around;
 
     button {
@@ -46,7 +46,7 @@ export const CalendarWrapper = styled.div`
 `;
 
 export const CalendarHeaderContainer = styled.header`
-  max-width: 100%;
+  width: 100vw;
   padding: 10px 2.5rem;
   margin-bottom: 1rem;
   background-color: ${primaryColor};
@@ -58,6 +58,13 @@ export const CalendarHeaderContainer = styled.header`
       width: 10rem;
     }
   }
+
+  .date-time {
+    p {
+      font-size: 1rem;
+    }
+  }
+
   .right-side-header {
     gap: 1.375rem;
 
