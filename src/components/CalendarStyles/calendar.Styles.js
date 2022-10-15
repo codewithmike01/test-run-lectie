@@ -37,6 +37,9 @@ export const CalendarHeaderContainer = styled.header`
         cursor: pointer;
       }
     }
+    p {
+      width: 10rem;
+    }
   }
   .right-side-header {
     gap: 1.375rem;
