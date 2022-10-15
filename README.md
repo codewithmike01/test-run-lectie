@@ -3,5 +3,6 @@
 ### Dependencies
 
 - Styled compoments
-- React Redux
+- React Redux toolkit
 - Dayjs
+- React Icons

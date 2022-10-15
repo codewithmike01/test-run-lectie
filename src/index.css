@@ -38,7 +38,9 @@ p {
   font-size: 1.5rem;
 }
 
-/* Utility */
+/* ====== UTILITIES =======*/
+
+/* ===== Flex Utilities ===== */
 .flex {
   display: flex;
 }
@@ -51,14 +53,17 @@ p {
   align-items: center;
 }
 
-.t-center {
-  text-align: center;
-}
-
 .j-align {
   justify-content: center;
 }
+.j-btw {
+  justify-content: space-between;
+}
 
+/* ======= Text Utilities */
+.t-center {
+  text-align: center;
+}
 .t-mid {
   font-size: 1.25rem;
 }

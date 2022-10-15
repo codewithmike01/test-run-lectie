@@ -4,7 +4,7 @@ import { DayContainer } from '../CalendarStyles/calendar.Styles';
 const Day = ({ day }) => {
   return (
     <DayContainer>
-      <header className="flex flex-col a-center j-align  ">
+      <header className="flex flex-col">
         <p className="day t-sm">{day.format('DD')}</p>
       </header>
     </DayContainer>
