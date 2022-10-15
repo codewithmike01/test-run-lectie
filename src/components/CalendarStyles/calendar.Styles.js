@@ -136,4 +136,21 @@ export const SideBarConatainer = styled.aside`
   padding: 1rem;
   width: 100%;
   max-width: 400px;
+
+  .month-move {
+    padding-top: 10px;
+    width: 100%;
+    max-width: 12rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.25rem;
+    justify-content: space-between;
+
+    button {
+      cursor: pointer;
+      padding-top: 5px;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+  }
 `;

@@ -6,3 +6,15 @@ export const ButtonContainer = styled.div`
     background-color: transparent;
   }
 `;
+
+export const ButtonColoredContainer = styled.button`
+  border: none;
+  background-color: ${({ color }) => (color ? color : ' ')};
+  padding: 8px 35px;
+  cursor: pointer;
+  border-radius: 8px;
+  span {
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+`;

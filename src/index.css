@@ -60,6 +60,10 @@ p {
   align-items: center;
 }
 
+.a-left {
+  align-items: flex-start;
+}
+
 .j-align {
   justify-content: center;
 }
