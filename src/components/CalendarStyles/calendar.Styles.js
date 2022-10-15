@@ -16,7 +16,31 @@ export const CalendarWrapper = styled.div`
   justify-content: space-between;
   width: 93%;
   margin: 0 auto;
+  .edit-background {
+    gap: 0.5rem;
+    margin-bottom: 1.375rem;
 
+    .img-container {
+      height: 7rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    p {
+      justify-content: flex-end;
+      font-size: 1rem;
+      color: #094b5f;
+      gap: 0.3rem;
+      cursor: pointer;
+      svg {
+        width: 16px;
+        height: 16px;
+        color: #8c8c8c;
+      }
+    }
+  }
   .weeks {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -67,7 +91,9 @@ export const CalendarHeaderContainer = styled.header`
 
   .right-side-header {
     gap: 1.375rem;
-
+    img {
+      cursor: pointer;
+    }
     .profile-image {
       width: 62px;
       height: 62px;
