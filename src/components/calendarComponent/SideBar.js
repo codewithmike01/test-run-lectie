@@ -1,7 +1,8 @@
 import React from 'react';
+import { SideBarConatainer } from '../CalendarStyles/calendar.Styles';
 
 const SideBar = () => {
-  return <div>Side</div>;
+  return <SideBarConatainer>Side</SideBarConatainer>;
 };
 
 export default SideBar;

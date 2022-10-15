@@ -1,6 +1,6 @@
 // import styled from 'styled-components';
 
-export const primaryColor = '#EF6D02';
+export const primaryColor = '#0E9BC5';
 export const midPrimaryColor = '#F38216';
 export const successColor = '#055D1D';
 export const warningColor = ' #9D8F14';
