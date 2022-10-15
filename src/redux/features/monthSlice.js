@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  monthNumber: 9,
+  monthNumber: 0,
 };
 
 const monthSlice = createSlice({

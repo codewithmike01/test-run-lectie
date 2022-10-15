@@ -1,5 +1,5 @@
 import React from 'react';
-import { DayContainer } from '../CalendarStyles/calendar.Styles';
+import { DayContainer } from './styles/calendar.Styles';
 
 const Day = ({ day }) => {
   return (

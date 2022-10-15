@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import { lightGray, primaryColor } from '../globalStyles/globalStyles.styles';
+import {
+  lightGray,
+  primaryColor,
+} from '../../globalStyles/globalStyles.styles';
 
 export const CalendarMainConatiner = styled.div`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -29,10 +32,12 @@ export const CalendarWrapper = styled.div`
       }
     }
     p {
+      align-self: flex-end;
       justify-content: flex-end;
       font-size: 1rem;
       color: #094b5f;
       gap: 0.3rem;
+      max-width: 200px;
       cursor: pointer;
       svg {
         width: 16px;
@@ -132,7 +137,6 @@ export const MonthContainer = styled.div`
 `;
 
 export const SideBarConatainer = styled.aside`
-  border: 2px solid ${lightGray};
   padding: 1rem;
   width: 100%;
   max-width: 400px;

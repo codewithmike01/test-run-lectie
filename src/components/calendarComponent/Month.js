@@ -8,7 +8,7 @@ import {
 } from '../../redux/features/monthSlice';
 import Button from '../utils/utilComponents/Button';
 import { FiChevronLeft, FiChevronRight, FiEdit } from 'react-icons/fi';
-import { MonthContainer } from '../CalendarStyles/calendar.Styles';
+import { MonthContainer } from './styles/calendar.Styles';
 import BgImage from '../../Assets/Images/background_edit.png';
 
 const Month = ({ month }) => {

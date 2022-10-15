@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarHeaderContainer } from '../CalendarStyles/calendar.Styles';
+import { CalendarHeaderContainer } from './styles/calendar.Styles';
 import { getTodayDate } from '../../util';
 import Profile from '../../Assets/Images/profile.jpg';
 import Setting from '../../Assets/Images/setting.svg';
