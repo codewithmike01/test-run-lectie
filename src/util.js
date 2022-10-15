@@ -42,4 +42,8 @@ export const getTodayDate = () => {
   return `${day}${nth} ${yearMonth}`;
 };
 
-getTodayDate();
+export const getClock = () => {
+  let date = new Date().toLocaleTimeString();
+  let clock = date.split(' ')[0] + ' ' + date.split(' ')[1].toLowerCase();
+  return clock;
+};

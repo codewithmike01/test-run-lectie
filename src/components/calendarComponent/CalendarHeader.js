@@ -3,6 +3,7 @@ import { CalendarHeaderContainer } from '../CalendarStyles/calendar.Styles';
 import { getTodayDate } from '../../util';
 import Profile from '../../Assets/Images/profile.jpg';
 import Setting from '../../Assets/Images/setting.svg';
+import Clock from '../utils/utilComponents/Clock';
 
 const CalendarHeader = () => {
   return (
@@ -13,6 +14,7 @@ const CalendarHeader = () => {
 
       <div className="date-time">
         <p>Date: {getTodayDate()}</p>
+        <Clock />
       </div>
 
       <div className="right-side-header flex a-center">
