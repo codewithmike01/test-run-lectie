@@ -92,6 +92,11 @@ p {
   width: 100%;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+/* Media Query */
 @media screen and (max-width: 586px) {
   html {
     font-size: calc(8px + 0.390625vw);

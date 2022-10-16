@@ -13,6 +13,7 @@ import ButtonColoured from '../utils/utilComponents/ButtonColored';
 import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
 import SmallCalendar from './SmallCalendar';
 import { setSmallMonthNumber } from '../../redux/features/smallMonthSlice';
+import { setShowModel } from '../../redux/features/modalSlice';
 
 const SideBar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -60,6 +61,21 @@ const SideBar = () => {
           <p className="t-sm">Calendars </p>
           <FiChevronDown className={show ? 'rotate ' : ''} />
         </header>
+      </div>
+
+      <div className="add-event flex a-center">
+        <div className="flex instruct a-center">
+          <div className="check"></div>
+
+          <p
+            className="model t-sm"
+            typeof="button"
+            onClick={() => smallDispatch(setShowModel(true))}
+          >
+            Add Event
+          </p>
+        </div>
+        <p className="t-sm bold">Edit</p>{' '}
       </div>
     </SideBarConatainer>
   );

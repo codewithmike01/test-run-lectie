@@ -211,6 +211,33 @@ export const SideBarConatainer = styled.aside`
       }
     }
   }
+
+  .add-event {
+    margin-top: 2rem;
+    gap: 1.5rem;
+
+    .instruct {
+      gap: 0.75rem;
+      .check {
+        width: 25px;
+        height: 25px;
+        border: 2px solid #2a2a2a;
+        opacity: 0.32;
+      }
+      .model {
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media screen and (max-width: 586px) {
+    .instruct {
+      .check {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
 `;
 
 export const SmallCalendarConatiner = styled.div`
@@ -231,6 +258,11 @@ export const SmallCalendarConatiner = styled.div`
     background-color: transparent;
     width: 40px;
     height: 40px;
+
+    &:hover {
+      border-radius: 50%;
+      background-color: #f1f3f4;
+    }
 
     p {
       cursor: pointer;
@@ -257,6 +289,157 @@ export const SmallCalendarConatiner = styled.div`
 
     p {
       cursor: pointer;
+    }
+  }
+`;
+
+export const EventContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+
+  form {
+    background-color: #fff;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 1px 3px 2px rgba(190, 190, 190, 0.8);
+    padding-bottom: 2rem;
+
+    header {
+      position: relative;
+      background-color: #f1f3f4;
+      padding: 0.4rem;
+      justify-content: flex-end;
+
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: gray;
+      }
+    }
+  }
+
+  .form-inputs {
+    display: grid;
+    grid-column: 1/5;
+    align-items: flex-end;
+    padding: 0.5rem;
+    gap: 1rem;
+
+    input:focus {
+      outline: none;
+      border-bottom: 2px solid blue;
+    }
+
+    input {
+      border: none;
+      border-bottom: 2px solid #f1f3f4;
+      transition: border-bottom 0.75s ease-in-out;
+    }
+
+    .event-title {
+      font-size: 0.9rem;
+      margin-right: 1.5rem;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
+
+    .date-time {
+      gap: 1rem;
+      margin-left: 0.3rem;
+      margin-bottom: 1rem;
+
+      .set-date-time {
+        gap: 1rem;
+
+        .time-date {
+          max-width: 165px;
+          width: 100%;
+          font-size: 0.8rem;
+          transition: border-bottom 0.75s ease-in-out;
+        }
+
+        span {
+          color: rgba(190, 190, 190, 1);
+        }
+        .date:hover {
+          border-bottom: 1px solid black;
+          cursor: pointer;
+        }
+        .time {
+          width: 100%;
+          max-width: 70px;
+        }
+      }
+    }
+
+    .descibe {
+      margin-left: 0.3rem;
+      gap: 1rem;
+
+      input {
+        font-size: 0.9rem;
+      }
+
+      .description {
+        width: 100%;
+      }
+
+      .img-container {
+        width: 24px;
+        height: 24px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .add-image {
+      gap: 1rem;
+
+      p {
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+    }
+    .button-contain {
+      margin-top: 18px;
+      justify-content: flex-end;
+      .button-save {
+        cursor: pointer;
+        width: 100px;
+        border: none;
+        border-radius: 4px;
+        padding: 7px 25px 7px 20px;
+        background-color: ${({ color }) => (color ? color : '')};
+      }
+    }
+  }
+
+  @media screen and (max-width: 586px) {
+    form {
+      max-width: 320px;
+
+      .form-inputs {
+        .date-time {
+          .set-date-time {
+            .time {
+              max-width: 55px;
+            }
+          }
+        }
+      }
     }
   }
 `;

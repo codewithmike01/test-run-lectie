@@ -3,6 +3,7 @@ import { getMonth } from './util';
 import { setMonthNumber } from './redux/features/monthSlice';
 import { setSmallMonthNumber } from './redux/features/smallMonthSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import EventModal from './components/calendarComponent/EventModal';
 import {
   CalendarMainConatiner,
   CalendarWrapper,
@@ -16,6 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const { monthNumber } = useSelector((state) => state.month);
+  const { show } = useSelector((state) => state.calendarModal);
   let month = parseInt(dayjs().month());
 
   useEffect(() => {
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <>
+      {show && <EventModal />}
       <CalendarMainConatiner>
         <CalendarHeader />
         <CalendarWrapper>
