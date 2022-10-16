@@ -140,7 +140,7 @@ export const MonthContainer = styled.div`
 export const SideBarConatainer = styled.aside`
   padding: 1rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 
   .month-move {
     padding-top: 10px;
@@ -158,12 +158,35 @@ export const SideBarConatainer = styled.aside`
       font-size: 1.25rem;
     }
   }
+
+  .my-calendar {
+    width: 100%;
+    header {
+      cursor: pointer;
+      padding: 5px 15px;
+      border-radius: 4px;
+      background-color: transparent;
+      transition: background-color 0.05s ease-in-out;
+      p {
+        font-size: 1.25rem;
+      }
+
+      .rotate {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        background-color: #f1f3f4;
+      }
+    }
+  }
 `;
 
 export const SmallCalendarConatiner = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  margin-bottom: 3rem;
 
   .day-init {
     font-size: 1.25rem;
@@ -176,6 +199,15 @@ export const SmallCalendarConatiner = styled.div`
     padding: 6px 15px 7px 13px;
     span {
       font-size: 1.25rem;
+      cursor: pointer;
     }
+  }
+
+  .highlight {
+    background-color: #1a73e8;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 6px;
+    margin: 3px 0px 9.69px;
   }
 `;

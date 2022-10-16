@@ -28,6 +28,7 @@ export const getMonth = (month = dayjs().month()) => {
   return daysMatrix;
 };
 
+// To format the date as 14th October 2022
 export const getTodayDate = () => {
   const date = new Date().toISOString().slice(0, 10);
   const day = date.split('-')[2];
@@ -42,8 +43,20 @@ export const getTodayDate = () => {
   return `${day}${nth} ${yearMonth}`;
 };
 
+// To format Time as hh:mm:ss am
 export const getClock = () => {
   let date = new Date().toLocaleTimeString();
   let clock = date.split(' ')[0] + ' ' + date.split(' ')[1].toLowerCase();
   return clock;
+};
+
+// To get current day: To higlight the current day in Calendar
+export const getDay = (day) => {
+  const format = 'DD-MM-YY';
+  const nowDay = dayjs().format(format);
+  const curDay = day.format(format);
+
+  if (nowDay === curDay) {
+    return true;
+  }
 };

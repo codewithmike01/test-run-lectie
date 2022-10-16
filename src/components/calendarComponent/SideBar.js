@@ -7,7 +7,7 @@ import {
 } from '../../redux/features/smallMonthSlice';
 import { getMonth } from '../../util';
 import { SideBarConatainer } from './styles/calendar.Styles';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import Button from '../utils/utilComponents/Button';
 import ButtonColoured from '../utils/utilComponents/ButtonColored';
 import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
@@ -16,6 +16,7 @@ import { setSmallMonthNumber } from '../../redux/features/smallMonthSlice';
 
 const SideBar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const [show, setShow] = useState(true);
   const dispatch = useDispatch();
   const smallDispatch = useDispatch();
   const { smallMonthNumber } = useSelector((state) => state.smallMonth);
@@ -47,7 +48,19 @@ const SideBar = () => {
           func={() => smallDispatch(setNextSmallMonthNumber())}
         />
       </div>
-      <SmallCalendar currentMonth={currentMonth} />
+      <SmallCalendar
+        currentMonth={currentMonth}
+        smallMonthNumber={smallMonthNumber}
+      />
+      <div className="my-calendar ">
+        <header
+          className="flex j-btw a-center"
+          onClick={() => setShow((prevState) => !prevState)}
+        >
+          <p>Calendars </p>
+          <FiChevronDown className={show ? 'rotate ' : ''} />
+        </header>
+      </div>
     </SideBarConatainer>
   );
 };
