@@ -9,7 +9,6 @@ const monthSlice = createSlice({
   initialState,
   reducers: {
     setMonthNumber: (state, { payload }) => {
-      console.log('This is payload', payload);
       state.monthNumber = payload;
     },
     setNextMonthNumber: (state) => {

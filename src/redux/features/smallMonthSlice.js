@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   smallMonthNumber: 0,
+  selectedSmallDay: null,
 };
 
 const smallMonthSlice = createSlice({
@@ -17,6 +18,9 @@ const smallMonthSlice = createSlice({
     setPrevSmallMonthNumber: (state) => {
       state.smallMonthNumber = state.smallMonthNumber - 1;
     },
+    setSmallSelectedDay: (state, { payload }) => {
+      state.selectedSmallDay = payload;
+    },
   },
 });
 
@@ -24,5 +28,6 @@ export const {
   setNextSmallMonthNumber,
   setPrevSmallMonthNumber,
   setSmallMonthNumber,
+  setSmallSelectedDay,
 } = smallMonthSlice.actions;
 export default smallMonthSlice.reducer;

@@ -51,12 +51,14 @@ export const getClock = () => {
 };
 
 // To get current day: To higlight the current day in Calendar
-export const getDay = (day) => {
+export const getDay = (day, selectedDay) => {
   const format = 'DD-MM-YY';
   const nowDay = dayjs().format(format);
   const curDay = day.format(format);
 
   if (nowDay === curDay) {
     return true;
+  } else if (selectedDay === curDay) {
+    return 'seen';
   }
 };

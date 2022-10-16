@@ -8,7 +8,7 @@ const ButtonColoured = ({ content, func, color }) => {
       type="button"
       onClick={func ? () => func() : () => {}}
     >
-      <span>{content}</span>
+      <span className="t-mid">{content}</span>
     </ButtonColoredContainer>
   );
 };

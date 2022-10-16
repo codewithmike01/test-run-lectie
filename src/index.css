@@ -8,10 +8,16 @@ html,
   font-size: calc(14px + 0.390625vw);
 }
 
+html {
+  /* overflow-x: hidden; */
+}
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
+  width: 100%;
+  /* overflow-x: hidden; */
 }
 
 aside,
@@ -79,9 +85,21 @@ p {
   font-size: 1.25rem;
 }
 .t-sm {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .w-100 {
   width: 100%;
+}
+
+@media screen and (max-width: 586px) {
+  html {
+    font-size: calc(8px + 0.390625vw);
+  }
+}
+
+@media screen and (max-width: 290px) {
+  html {
+    font-size: calc(4.5px + 0.390625vw);
+  }
 }

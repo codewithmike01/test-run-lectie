@@ -17,4 +17,8 @@ export const ButtonColoredContainer = styled.button`
     font-weight: 500;
     font-size: 0.8rem;
   }
+
+  @media screen and (max-width: 589px) {
+    padding: 7px 25px;
+  }
 `;

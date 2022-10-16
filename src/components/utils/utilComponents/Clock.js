@@ -12,7 +12,7 @@ const Clock = () => {
     };
   }, [time]);
 
-  return <div>Time: {time}</div>;
+  return <div className="t-sm"> Time: {time}</div>;
 };
 
 export default Clock;

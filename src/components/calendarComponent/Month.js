@@ -8,7 +8,10 @@ import {
 } from '../../redux/features/monthSlice';
 import Button from '../utils/utilComponents/Button';
 import { FiChevronLeft, FiChevronRight, FiEdit } from 'react-icons/fi';
-import { MonthContainer } from './styles/calendar.Styles';
+import {
+  MonthContainer,
+  RightSideCalendarContainer,
+} from './styles/calendar.Styles';
 import BgImage from '../../Assets/Images/background_edit.png';
 
 const Month = ({ month }) => {
@@ -20,12 +23,12 @@ const Month = ({ month }) => {
 
   return (
     <React.Fragment>
-      <div className=" flex flex-col w-100">
+      <RightSideCalendarContainer className="flex flex-col">
         <div className="edit-background flex flex-col">
           <div className="img-container">
             <img src={BgImage} alt="background cover" />
           </div>
-          <p className="flex a-center">
+          <p className="flex a-center t-sm">
             Edit
             <FiEdit />
           </p>
@@ -35,7 +38,7 @@ const Month = ({ month }) => {
             content={<FiChevronLeft />}
             func={() => dispatch(setPrevMonthNumber())}
           />
-          <p>{dateFormated.split(' ')[1]}</p>
+          <p className="t-sm">{dateFormated.split(' ')[1]}</p>
           <Button
             content={<FiChevronRight />}
             func={() => dispatch(setNextMonthNumber())}
@@ -43,7 +46,7 @@ const Month = ({ month }) => {
         </div>
         <div className="weeks">
           {month[0].map((row, i) => (
-            <div className="t-center" key={i}>
+            <div className="t-center t-sm" key={i}>
               {row.format('ddd')}
             </div>
           ))}
@@ -58,7 +61,7 @@ const Month = ({ month }) => {
             </React.Fragment>
           ))}
         </MonthContainer>
-      </div>
+      </RightSideCalendarContainer>
     </React.Fragment>
   );
 };

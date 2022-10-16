@@ -5,19 +5,20 @@ import {
 } from '../../globalStyles/globalStyles.styles';
 
 export const CalendarMainConatiner = styled.div`
-  height: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
-
   padding-bottom: 3.5rem;
 `;
 
 export const CalendarWrapper = styled.div`
   display: flex;
   flex: 1;
-  gap: 3rem;
+  gap: 2.4rem;
   justify-content: space-between;
   width: 93%;
+  max-width: 1424px;
+
   margin: 0 auto;
   .edit-background {
     gap: 0.5rem;
@@ -75,17 +76,15 @@ export const CalendarWrapper = styled.div`
 `;
 
 export const CalendarHeaderContainer = styled.header`
-  width: 100vw;
+  max-width: 100vw;
   padding: 10px 2.5rem;
   margin-bottom: 1rem;
   background-color: ${primaryColor};
+
   color: #fff;
+
   .left-side-header {
     gap: 2rem;
-
-    p {
-      width: 10rem;
-    }
   }
 
   .date-time {
@@ -99,6 +98,17 @@ export const CalendarHeaderContainer = styled.header`
     img {
       cursor: pointer;
     }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     .profile-image {
       width: 62px;
       height: 62px;
@@ -109,6 +119,32 @@ export const CalendarHeaderContainer = styled.header`
         object-fit: cover;
         border-radius: 50%;
         image-rendering: pixelated;
+      }
+    }
+  }
+
+  @media screen and (max-width: 586px) {
+    .right-side-header {
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
+      .profile-image {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 290px) {
+    .right-side-header {
+      .icon {
+        width: 15px;
+        height: 15px;
+      }
+      .profile-image {
+        width: 35px;
+        height: 35px;
       }
     }
   }
@@ -124,23 +160,24 @@ export const DayContainer = styled.div`
     padding-bottom: 25px;
     text-align: right;
   }
-
-  @media screen and (max-width: 586px) {
-  }
 `;
 
+export const RightSideCalendarContainer = styled.div``;
 export const MonthContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-auto-rows: minmax(100px, auto);
   flex: 1;
+  width: 100%;
 `;
 
 export const SideBarConatainer = styled.aside`
   padding: 1rem;
-  width: 100%;
-  max-width: 420px;
+  padding-top: 0px;
+
+  max-width: 100%;
+  position: relative;
 
   .month-move {
     padding-top: 10px;
@@ -154,9 +191,6 @@ export const SideBarConatainer = styled.aside`
       cursor: pointer;
       padding-top: 5px;
     }
-    p {
-      font-size: 1.25rem;
-    }
   }
 
   .my-calendar {
@@ -167,9 +201,6 @@ export const SideBarConatainer = styled.aside`
       border-radius: 4px;
       background-color: transparent;
       transition: background-color 0.05s ease-in-out;
-      p {
-        font-size: 1.25rem;
-      }
 
       .rotate {
         transform: rotate(180deg);
@@ -183,22 +214,25 @@ export const SideBarConatainer = styled.aside`
 `;
 
 export const SmallCalendarConatiner = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  grid-auto-columns: minmax(100px, auto);
+  flex: 1;
   margin-bottom: 3rem;
 
   .day-init {
-    font-size: 1.25rem;
-    padding: 4.5px 15.5px;
+    padding: 4.5px 6.5px;
   }
+
   button {
     border: none;
     background-color: transparent;
-    width: 100%;
-    padding: 6px 15px 7px 13px;
-    span {
-      font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+
+    p {
       cursor: pointer;
     }
   }
@@ -207,7 +241,22 @@ export const SmallCalendarConatiner = styled.div`
     background-color: #1a73e8;
     color: #fff;
     border-radius: 50%;
-    padding: 5px 6px;
-    margin: 3px 0px 9.69px;
+  }
+
+  .selected {
+    background-color: #d2e3fc;
+    color: #185abc;
+    border-radius: 50%;
+  }
+
+  @media screen and (max-width: 586px) {
+    button {
+      width: 20px;
+      height: 20px;
+    }
+
+    p {
+      cursor: pointer;
+    }
   }
 `;

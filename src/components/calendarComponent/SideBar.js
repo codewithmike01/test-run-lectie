@@ -36,13 +36,13 @@ const SideBar = () => {
   return (
     <SideBarConatainer>
       <ButtonColoured content={'Preview'} color={buttonBlueColor} />
-      <div className="month-move flex">
+      <div className="month-move flex a-center">
         <Button
           content={<FiChevronLeft />}
           func={() => smallDispatch(setPrevSmallMonthNumber())}
         />
-        <p>{dateFormated.split(' ')[1]}</p>
-        <p>{dateFormated.split(' ')[0]}</p>
+        <p className="t-sm">{dateFormated.split(' ')[1]}</p>
+        <p className="t-sm">{dateFormated.split(' ')[0]}</p>
         <Button
           content={<FiChevronRight />}
           func={() => smallDispatch(setNextSmallMonthNumber())}
@@ -57,7 +57,7 @@ const SideBar = () => {
           className="flex j-btw a-center"
           onClick={() => setShow((prevState) => !prevState)}
         >
-          <p>Calendars </p>
+          <p className="t-sm">Calendars </p>
           <FiChevronDown className={show ? 'rotate ' : ''} />
         </header>
       </div>
