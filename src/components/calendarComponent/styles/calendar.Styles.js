@@ -159,3 +159,23 @@ export const SideBarConatainer = styled.aside`
     }
   }
 `;
+
+export const SmallCalendarConatiner = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+
+  .day-init {
+    font-size: 1.25rem;
+    padding: 4.5px 15.5px;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 6px 15px 7px 13px;
+    span {
+      font-size: 1.25rem;
+    }
+  }
+`;

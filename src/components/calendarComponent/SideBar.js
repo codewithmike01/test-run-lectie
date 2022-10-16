@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import {
   setPrevSmallMonthNumber,
   setNextSmallMonthNumber,
 } from '../../redux/features/smallMonthSlice';
+import { getMonth } from '../../util';
 import { SideBarConatainer } from './styles/calendar.Styles';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Button from '../utils/utilComponents/Button';
@@ -14,6 +15,7 @@ import SmallCalendar from './SmallCalendar';
 import { setSmallMonthNumber } from '../../redux/features/smallMonthSlice';
 
 const SideBar = () => {
+  const [currentMonth, setCurrentMonth] = useState(getMonth());
   const dispatch = useDispatch();
   const smallDispatch = useDispatch();
   const { smallMonthNumber } = useSelector((state) => state.smallMonth);
@@ -25,6 +27,10 @@ const SideBar = () => {
   useEffect(() => {
     dispatch(setSmallMonthNumber(monthNumber));
   }, [monthNumber, dispatch]);
+
+  useEffect(() => {
+    setCurrentMonth(getMonth(smallMonthNumber));
+  }, [smallMonthNumber]);
 
   return (
     <SideBarConatainer>
@@ -41,7 +47,7 @@ const SideBar = () => {
           func={() => smallDispatch(setNextSmallMonthNumber())}
         />
       </div>
-      <SmallCalendar />
+      <SmallCalendar currentMonth={currentMonth} />
     </SideBarConatainer>
   );
 };
