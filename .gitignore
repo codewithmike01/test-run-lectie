@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/src/components/coverClaendar
 .pnp.js
 
 # testing

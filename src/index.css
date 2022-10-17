@@ -99,12 +99,12 @@ p {
 /* Media Query */
 @media screen and (max-width: 586px) {
   html {
-    font-size: calc(8px + 0.390625vw);
+    font-size: calc(9px + 0.390625vw);
   }
 }
 
 @media screen and (max-width: 290px) {
   html {
-    font-size: calc(4.5px + 0.390625vw);
+    font-size: calc(8.5px + 0.390625vw);
   }
 }

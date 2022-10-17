@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  buttonBlueColor,
   lightGray,
   primaryColor,
 } from '../../globalStyles/globalStyles.styles';
@@ -303,143 +304,73 @@ export const EventContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 3;
+  border: 2px solid red;
+`;
+
+export const EventWrapper = styled.div`
+  width: 100%;
+  max-width: 476px;
+  border: 2px solid green;
+  background-color: #fff;
+  padding-bottom: 20px;
+  header {
+    padding: 8px 1.25rem;
+    border-radius: 4px;
+    justify-content: flex-end;
+    background-color: ${buttonBlueColor};
+    button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
 
   form {
-    background-color: #fff;
-    border-radius: 4px;
     width: 100%;
-    max-width: 480px;
-    box-shadow: 1px 3px 2px rgba(190, 190, 190, 0.8);
-    padding-bottom: 2rem;
-
-    header {
-      position: relative;
-      background-color: #f1f3f4;
-      padding: 0.4rem;
-      justify-content: flex-end;
-
-      button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        color: gray;
-      }
-    }
-  }
-
-  .form-inputs {
-    display: grid;
-    grid-column: 1/5;
-    align-items: flex-end;
-    padding: 0.5rem;
-    gap: 1rem;
-
-    input:focus {
-      outline: none;
-      border-bottom: 2px solid blue;
-    }
-
+    margin-top: 30px;
+    gap: 1.5rem;
+    padding-left: 20px;
     input {
       border: none;
-      border-bottom: 2px solid #f1f3f4;
-      transition: border-bottom 0.75s ease-in-out;
-    }
-
-    .event-title {
-      font-size: 0.9rem;
-      margin-right: 1.5rem;
-      width: 80%;
+      border-bottom: 1px solid gray;
       margin: 0 auto;
-      margin-bottom: 1rem;
+      width: 80%;
+
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid blue;
+        transition: border-bottom 0.2s ease-in;
+      }
     }
 
-    .date-time {
+    .time-date {
+      width: 100%;
       gap: 1rem;
-      margin-left: 0.3rem;
-      margin-bottom: 1rem;
-
-      .set-date-time {
+      .time-date-input {
         gap: 1rem;
 
-        .time-date {
-          max-width: 165px;
+        .event-date {
+          margin: 0;
+          max-width: 290px;
           width: 100%;
-          font-size: 0.8rem;
-          transition: border-bottom 0.75s ease-in-out;
         }
 
-        span {
-          color: rgba(190, 190, 190, 1);
+        .time-size {
+          margin: 0;
+          max-width: 150px;
         }
-        .date:hover {
-          border-bottom: 1px solid black;
-          cursor: pointer;
-        }
-        .time {
-          width: 100%;
-          max-width: 70px;
-        }
-      }
-    }
-
-    .descibe {
-      margin-left: 0.3rem;
-      gap: 1rem;
-
-      input {
-        font-size: 0.9rem;
-      }
-
-      .description {
-        width: 100%;
-      }
-
-      .img-container {
-        width: 24px;
-        height: 24px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-
-    .add-image {
-      gap: 1rem;
-
-      p {
-        cursor: pointer;
-        font-size: 0.9rem;
-      }
-    }
-    .button-contain {
-      margin-top: 18px;
-      justify-content: flex-end;
-      .button-save {
-        cursor: pointer;
-        width: 100px;
-        border: none;
-        border-radius: 4px;
-        padding: 7px 25px 7px 20px;
-        background-color: ${({ color }) => (color ? color : '')};
       }
     }
   }
 
-  @media screen and (max-width: 586px) {
-    form {
-      max-width: 320px;
-
-      .form-inputs {
-        .date-time {
-          .set-date-time {
-            .time {
-              max-width: 55px;
-            }
-          }
-        }
-      }
+  .description {
+    gap: 1rem;
+    textarea {
+      padding: 10px;
+    }
+    textarea:focus {
+      border: 1px solid blue;
     }
   }
 `;

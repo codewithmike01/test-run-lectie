@@ -6,4 +6,4 @@ export const successColor = '#055D1D';
 export const warningColor = ' #9D8F14';
 export const errorColor = '#AA170D';
 export const lightGray = '#D3D3D3';
-export const buttonBlueColor = '#78DDFB';
+export const buttonBlueColor = '#2667B1';

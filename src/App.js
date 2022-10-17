@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { getMonth } from './util';
 import { setMonthNumber } from './redux/features/monthSlice';
 import { setSmallMonthNumber } from './redux/features/smallMonthSlice';
@@ -12,6 +13,8 @@ import CalendarHeader from './components/calendarComponent/CalendarHeader';
 import SideBar from './components/calendarComponent/SideBar';
 import Month from './components/calendarComponent/Month';
 import dayjs from 'dayjs';
+
+import FinancialCalendar from './components/coverClaendar/FinancialCalendar';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +42,10 @@ function App() {
           <Month month={currentMonth} />
         </CalendarWrapper>
       </CalendarMainConatiner>
+
+      {/*<Routes>
+        <Route path="/" element={<FinancialCalendar />} />
+</Routes>*/}
     </>
   );
 }

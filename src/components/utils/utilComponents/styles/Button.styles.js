@@ -13,6 +13,7 @@ export const ButtonColoredContainer = styled.button`
   padding: 8px 35px;
   cursor: pointer;
   border-radius: 8px;
+  color: #fff;
   span {
     font-weight: 500;
     font-size: 0.8rem;
