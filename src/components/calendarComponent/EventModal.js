@@ -1,6 +1,6 @@
 import React from 'react';
 import { EventContainer, EventWrapper } from './styles/calendar.Styles';
-import { setShowModel } from '../../redux/features/modalSlice';
+import { setShowEventModel } from '../../redux/features/modalSlice';
 import { useDispatch } from 'react-redux';
 
 import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
@@ -13,7 +13,10 @@ const EventModal = () => {
     <EventContainer color={buttonBlueColor}>
       <EventWrapper>
         <header className="flex">
-          <button type="button" onClick={() => dispatch(setShowModel(false))}>
+          <button
+            type="button"
+            onClick={() => dispatch(setShowEventModel(false))}
+          >
             &times;
           </button>
         </header>

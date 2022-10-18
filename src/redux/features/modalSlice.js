@@ -1,18 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  show: false,
+  showEvent: false,
+  showTime: false,
 };
 
 const modalSlice = createSlice({
   name: 'calendarModal',
   initialState,
   reducers: {
-    setShowModel: (state, { payload }) => {
-      state.show = payload;
+    setShowEventModel: (state, { payload }) => {
+      state.showEvent = payload;
+    },
+    setShowTimeModel: (state, { payload }) => {
+      state.showTime = payload;
     },
   },
 });
 
-export const { setShowModel } = modalSlice.actions;
+export const { setShowEventModel, setShowTimeModel } = modalSlice.actions;
 export default modalSlice.reducer;

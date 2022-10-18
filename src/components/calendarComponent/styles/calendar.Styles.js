@@ -307,10 +307,15 @@ export const EventContainer = styled.div`
 `;
 
 export const EventWrapper = styled.div`
-  width: 100%;
-  max-width: 476px;
+  position: relative;
+  width: 80%;
+  max-width: 390px;
   background-color: #fff;
   padding-bottom: 20px;
+
+  box-shadow: 2px 15px 46px 6px rgba(0, 0, 0, 0.29);
+  -webkit-box-shadow: 2px 15px 46px 6px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 2px 15px 46px 6px rgba(0, 0, 0, 0.29);
   header {
     padding: 8px 1.25rem;
     border-radius: 4px;
@@ -327,25 +332,30 @@ export const EventWrapper = styled.div`
   form {
     width: 100%;
     margin-top: 30px;
-    gap: 1.5rem;
+    gap: 2rem;
     padding-left: 20px;
+    padding-right: 10px;
+
     input {
       border: none;
-      border-bottom: 1px solid gray;
+      border-bottom: 2px solid gray;
       margin: 0 auto;
       width: 80%;
+      font-size: 0.89rem;
 
       &:focus {
         outline: none;
-        border-bottom: 1px solid ${buttonBlueColor};
+        border-bottom: 2px solid ${buttonBlueColor};
         transition: border-bottom 0.2s ease-in;
       }
     }
 
     .time-date {
+      position: relative;
       width: 100%;
       gap: 1rem;
       .time-date-input {
+        position: inherit;
         gap: 1rem;
 
         .event-date {
@@ -353,56 +363,94 @@ export const EventWrapper = styled.div`
           max-width: 175px;
           width: 100%;
         }
-
-        .time-size {
-          margin: 0;
-          max-width: 150px;
+        .time-container {
+          position: inherit;
+          gap: 1rem;
+          .time-size {
+            margin: 0;
+            max-width: 130px;
+          }
         }
       }
     }
   }
 
   .description {
-    gap: 1rem;
-    textarea {
-      padding: 10px;
+    gap: 0.7rem;
+    width: 100%;
+    .hovDescription,
+    p {
+      cursor: pointer;
+      padding: 5px;
+      width: 100%;
     }
-    textarea:focus {
-      outline: none;
-      border: 1px solid ${buttonBlueColor};
-    }
+  }
+  .hovDescription:hover {
+    background-color: #f1f3f4;
   }
 
   .add-image {
-    border: 2px solid green;
-    width: 80%;
-    max-width: 226px;
-    justify-content: center;
-    padding: 10px 3px;
-    border: 1px dashed #eceef0;
-    background-color: #f6f7f9;
     gap: 15px;
-    .icon {
-      width: 24px;
-      height: 24px;
-      opacity: 0.5;
-    }
 
     p {
+      cursor: pointer;
       text-align: center;
-      line-height: 1rem;
-      font-size: 0.6rem;
     }
+  }
 
-    .btn-container {
-      button {
-        padding: 5px 25px;
-        display: flex;
+  .button-container {
+    width: 73%;
+    justify-content: flex-end;
+  }
+  .color-contain {
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+    .colors {
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+`;
 
-        span {
-          font-size: 0.7rem;
-        }
-      }
+export const TimeModalContainer = styled.div`
+  height: 200px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 21px;
+  width: 50%;
+  max-width: 150px;
+  text-align: center;
+  box-shadow: -1px 7px 15px 7px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: -1px 7px 15px 7px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: -1px 7px 15px 7px rgba(0, 0, 0, 0.19);
+  padding-top: 8px;
+  gap: 10px;
+  z-index: 4;
+  background-color: #fff;
+  right: ${({ pos }) => (pos === 'end-time' ? '0' : '')};
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(189, 193, 198, 0.3);
+    height: 40px;
+    border-radius: 30%;
+  }
+
+  .time {
+    padding: 10px 10px;
+    font-size: 0.8rem;
+    text-align: left;
+
+    &:hover {
+      background-color: #f1f3f4;
+      cursor: pointer;
     }
   }
 `;

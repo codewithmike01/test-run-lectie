@@ -20,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const { monthNumber } = useSelector((state) => state.month);
-  const { show } = useSelector((state) => state.calendarModal);
+  const { showEvent } = useSelector((state) => state.calendarModal);
   let month = parseInt(dayjs().month());
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      {show && <EventModal />}
+      {showEvent && <EventModal />}
       <CalendarMainConatiner>
         <CalendarHeader />
         <CalendarWrapper>

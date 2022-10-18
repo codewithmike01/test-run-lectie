@@ -50,6 +50,15 @@ export const getClock = () => {
   return clock;
 };
 
+// To get time format 10:10am
+export const getTime = () => {
+  let date = new Date().toLocaleTimeString();
+  let time =
+    date.split(' ')[0].split(':').splice(0, 2).join(':') +
+    date.split(' ')[1].toLowerCase();
+  return time;
+};
+
 // To get current day: To higlight the current day in Calendar
 export const getDay = (day, selectedDay) => {
   const format = 'dddd MMMM DD';

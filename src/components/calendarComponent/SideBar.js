@@ -5,7 +5,8 @@ import {
   setPrevSmallMonthNumber,
   setNextSmallMonthNumber,
 } from '../../redux/features/smallMonthSlice';
-import { getMonth } from '../../util';
+import { setStartTime } from '../../redux/features/timeSlice';
+import { getMonth, getTime } from '../../util';
 import { SideBarConatainer } from './styles/calendar.Styles';
 import { FiChevronLeft, FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import Button from '../utils/utilComponents/Button';
@@ -13,7 +14,7 @@ import ButtonColoured from '../utils/utilComponents/ButtonColored';
 import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
 import SmallCalendar from './SmallCalendar';
 import { setSmallMonthNumber } from '../../redux/features/smallMonthSlice';
-import { setShowModel } from '../../redux/features/modalSlice';
+import { setShowEventModel } from '../../redux/features/modalSlice';
 
 const SideBar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -70,7 +71,10 @@ const SideBar = () => {
           <p
             className="model t-sm"
             typeof="button"
-            onClick={() => smallDispatch(setShowModel(true))}
+            onClick={() => {
+              smallDispatch(setShowEventModel(true));
+              smallDispatch(setStartTime(getTime()));
+            }}
           >
             Add Event
           </p>

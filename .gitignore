@@ -3,8 +3,11 @@
 # dependencies
 /node_modules
 /.pnp
-# /src/components/coverClaendar
 .pnp.js
+
+# Cover background
+/src/components/coverClaendar
+
 
 # testing
 /coverage
