@@ -54,15 +54,6 @@ const SideBar = () => {
         currentMonth={currentMonth}
         smallMonthNumber={smallMonthNumber}
       />
-      <div className="my-calendar ">
-        <header
-          className="flex j-btw a-center"
-          onClick={() => setShow((prevState) => !prevState)}
-        >
-          <p className="t-sm">Calendars </p>
-          <FiChevronDown className={show ? 'rotate ' : ''} />
-        </header>
-      </div>
 
       <div className="add-event flex a-center">
         <div className="flex instruct a-center">

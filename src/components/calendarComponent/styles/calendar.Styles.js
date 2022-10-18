@@ -74,6 +74,11 @@ export const CalendarWrapper = styled.div`
       font-size: 1.25rem;
     }
   }
+
+  @media screen and (max-width: 587px) {
+    gap: 0;
+    width: 99%;
+  }
 `;
 
 export const CalendarHeaderContainer = styled.header`
@@ -157,9 +162,10 @@ export const DayContainer = styled.div`
   flex-direction: column;
 
   .day {
-    margin: 0.5625rem 0.5rem;
     padding-bottom: 25px;
-    text-align: right;
+    margin: 0.57rem auto;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -171,6 +177,33 @@ export const MonthContainer = styled.div`
   grid-auto-rows: minmax(100px, auto);
   flex: 1;
   width: 100%;
+
+  .down {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    border-radius: 50%;
+    margin: 10px auto;
+    padding: 9px;
+
+    &:hover {
+      background-color: #f1f3f4;
+      cursor: pointer;
+    }
+  }
+
+  .highlight {
+    background-color: #1a73e8;
+    color: #fff;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    border-radius: 50%;
+    margin: 10px auto;
+    padding: 9px;
+    cursor: pointer;
+  }
+  .day-month {
+    padding: 4px;
+  }
 `;
 
 export const SideBarConatainer = styled.aside`
@@ -194,25 +227,6 @@ export const SideBarConatainer = styled.aside`
     }
   }
 
-  .my-calendar {
-    width: 100%;
-    header {
-      cursor: pointer;
-      padding: 5px 15px;
-      border-radius: 4px;
-      background-color: transparent;
-      transition: background-color 0.05s ease-in-out;
-
-      .rotate {
-        transform: rotate(180deg);
-      }
-
-      &:hover {
-        background-color: #f1f3f4;
-      }
-    }
-  }
-
   .add-event {
     margin-top: 2rem;
     gap: 1.5rem;
@@ -232,6 +246,8 @@ export const SideBarConatainer = styled.aside`
   }
 
   @media screen and (max-width: 586px) {
+    padding: 0.5rem;
+
     .instruct {
       .check {
         width: 20px;
