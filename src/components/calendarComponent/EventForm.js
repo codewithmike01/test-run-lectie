@@ -9,6 +9,7 @@ import Editor from '../utils/utilComponents/Editor';
 import TimeModal from './TimeModal';
 import { setShowTimeModel } from '../../redux/features/modalSlice';
 import { colorArr } from './service/colorService';
+import dayjs from 'dayjs';
 
 const EventForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const EventForm = () => {
   const [firstTime, setFirstTime] = useState(startTime);
   const [lastTime, setLastTime] = useState(endTime);
   const [color, setColor] = useState('');
-  const [date, setDate] = useState(selectedSmallDay);
+  const [date, setDate] = useState(
+    selectedSmallDay || dayjs().format('dddd MMMM DD')
+  );
 
   useEffect(() => {
     setFirstTime(startTime);
