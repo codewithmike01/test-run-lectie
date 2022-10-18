@@ -3,11 +3,11 @@
 # dependencies
 /node_modules
 /.pnp
-/src/components/coverClaendar
+# /src/components/coverClaendar
 .pnp.js
 
 # testing
-# /coverage
+/coverage
 
 # production
 /build
