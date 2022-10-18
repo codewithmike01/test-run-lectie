@@ -38,7 +38,7 @@ const SmallCalendar = ({ currentMonth, smallMonthNumber }) => {
                   ? 'highlight'
                   : getDay(day, selectedSmallDay) === 'seen'
                   ? 'selected'
-                  : ''
+                  : 'hov'
               }
             >
               <p className="t-sm">{day.format('D')}</p>

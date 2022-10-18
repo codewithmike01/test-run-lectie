@@ -260,16 +260,16 @@ export const SmallCalendarConatiner = styled.div`
     width: 40px;
     height: 40px;
 
-    &:hover {
-      border-radius: 50%;
-      background-color: #f1f3f4;
-    }
-
     p {
       cursor: pointer;
     }
   }
-
+  .hov {
+    &:hover {
+      border-radius: 50%;
+      background-color: #f1f3f4;
+    }
+  }
   .highlight {
     background-color: #1a73e8;
     color: #fff;
@@ -304,13 +304,11 @@ export const EventContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 3;
-  border: 2px solid red;
 `;
 
 export const EventWrapper = styled.div`
   width: 100%;
   max-width: 476px;
-  border: 2px solid green;
   background-color: #fff;
   padding-bottom: 20px;
   header {
@@ -339,7 +337,7 @@ export const EventWrapper = styled.div`
 
       &:focus {
         outline: none;
-        border-bottom: 1px solid blue;
+        border-bottom: 1px solid ${buttonBlueColor};
         transition: border-bottom 0.2s ease-in;
       }
     }
@@ -352,7 +350,7 @@ export const EventWrapper = styled.div`
 
         .event-date {
           margin: 0;
-          max-width: 290px;
+          max-width: 175px;
           width: 100%;
         }
 
@@ -370,7 +368,41 @@ export const EventWrapper = styled.div`
       padding: 10px;
     }
     textarea:focus {
-      border: 1px solid blue;
+      outline: none;
+      border: 1px solid ${buttonBlueColor};
+    }
+  }
+
+  .add-image {
+    border: 2px solid green;
+    width: 80%;
+    max-width: 226px;
+    justify-content: center;
+    padding: 10px 3px;
+    border: 1px dashed #eceef0;
+    background-color: #f6f7f9;
+    gap: 15px;
+    .icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.5;
+    }
+
+    p {
+      text-align: center;
+      line-height: 1rem;
+      font-size: 0.6rem;
+    }
+
+    .btn-container {
+      button {
+        padding: 5px 25px;
+        display: flex;
+
+        span {
+          font-size: 0.7rem;
+        }
+      }
     }
   }
 `;

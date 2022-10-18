@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { useSelector } from 'react-redux';
 import Clock from '../../Assets/Images/clock.png';
 import Descripe from '../../Assets/Images/describe.svg';
+
 const EventForm = () => {
+  const { selectedSmallDay } = useSelector((state) => state.smallMonth);
+
+  const [title, setTitle] = useState();
+  const [date, setDate] = useState(selectedSmallDay);
+
   return (
     <form className="flex flex-col">
       <input
@@ -21,7 +29,7 @@ const EventForm = () => {
             className="event-date"
             type="text"
             name="event-date"
-            value={null}
+            value={date}
             placeholder="Add Date"
             required
           />
@@ -40,7 +48,7 @@ const EventForm = () => {
         <div>
           <img src={Descripe} alt="description" />
         </div>
-        <textarea placeholder="Description"></textarea>
+        <textarea placeholder="Add description"></textarea>
       </div>
     </form>
   );

@@ -14,6 +14,9 @@ export const ButtonColoredContainer = styled.button`
   cursor: pointer;
   border-radius: 8px;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   span {
     font-weight: 500;
     font-size: 0.8rem;
