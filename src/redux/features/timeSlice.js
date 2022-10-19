@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { endTime } from '../../components/calendarComponent/service/timePopup';
 
 const initialState = {
   startTime: null,
   endTime: null,
+  selectedDate: null,
 };
 
 const timeSlice = createSlice({
-  name: 'startTimeModal',
+  name: 'startEventModal',
   initialState,
   reducers: {
     setStartTime: (state, { payload }) => {
@@ -21,8 +21,11 @@ const timeSlice = createSlice({
     setEndTime: (state, { payload }) => {
       state.endTime = payload;
     },
+    setSelectedDate: (state, { payload }) => {
+      state.selectedDate = payload;
+    },
   },
 });
 
-export const { setStartTime, setEndTime } = timeSlice.actions;
+export const { setStartTime, setEndTime, setSelectedDate } = timeSlice.actions;
 export default timeSlice.reducer;

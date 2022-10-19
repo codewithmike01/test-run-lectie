@@ -8,7 +8,7 @@ const store = configureStore({
     month: monthSlice,
     smallMonth: smallMonthSlide,
     calendarModal: modalSlice,
-    startTimeModal: timeSlice,
+    startEventModal: timeSlice,
   },
 });
 

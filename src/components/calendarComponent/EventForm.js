@@ -13,8 +13,9 @@ import dayjs from 'dayjs';
 
 const EventForm = () => {
   const dispatch = useDispatch();
-  const { selectedSmallDay } = useSelector((state) => state.smallMonth);
-  const { startTime, endTime } = useSelector((state) => state.startTimeModal);
+  const { startTime, endTime, selectedDate } = useSelector(
+    (state) => state.startEventModal
+  );
   const { showTime } = useSelector((state) => state.calendarModal);
   const [showEditor, setShowEditor] = useState(false);
 
@@ -26,7 +27,7 @@ const EventForm = () => {
   const [lastTime, setLastTime] = useState(endTime);
   const [color, setColor] = useState('');
   const [date, setDate] = useState(
-    selectedSmallDay || dayjs().format('dddd MMMM DD')
+    selectedDate || dayjs().format('dddd MMMM DD')
   );
 
   useEffect(() => {

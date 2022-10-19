@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SmallCalendarConatiner } from './styles/calendar.Styles';
 import { getDay } from '../../util';
 import { setMonthNumber } from '../../redux/features/monthSlice';
-import { setSmallSelectedDay } from '../../redux/features/smallMonthSlice';
+import { setSelectedDate } from '../../redux/features/timeSlice';
 
 const SmallCalendar = ({ currentMonth, smallMonthNumber }) => {
   const dispatch = useDispatch();
   const smallDispatch = useDispatch();
   const [smallCurrentMonth, setSmallCurrentMonth] = useState(null);
-  const { selectedSmallDay } = useSelector((state) => state.smallMonth);
+  const { selectedDate } = useSelector((state) => state.startEventModal);
 
   useEffect(() => {
     if (smallCurrentMonth !== null) {
@@ -31,12 +31,12 @@ const SmallCalendar = ({ currentMonth, smallMonthNumber }) => {
               type="button"
               onClick={() => {
                 setSmallCurrentMonth(smallMonthNumber);
-                smallDispatch(setSmallSelectedDay(day.format('dddd MMMM DD')));
+                smallDispatch(setSelectedDate(day.format('dddd MMMM DD')));
               }}
               className={
-                getDay(day, selectedSmallDay) === true
+                getDay(day, selectedDate) === true
                   ? 'highlight'
-                  : getDay(day, selectedSmallDay) === 'seen'
+                  : getDay(day, selectedDate) === 'seen'
                   ? 'selected'
                   : 'hov'
               }
