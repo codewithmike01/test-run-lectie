@@ -6,7 +6,7 @@ import {
   setPrevMonthNumber,
   setNextMonthNumber,
 } from '../../redux/features/monthSlice';
-import { setSelectedDate } from '../../redux/features/timeSlice';
+import { setSelectedDate, setStartTime } from '../../redux/features/timeSlice';
 import Button from '../utils/utilComponents/Button';
 import { FiChevronLeft, FiChevronRight, FiEdit } from 'react-icons/fi';
 import {
@@ -15,10 +15,13 @@ import {
 } from './styles/calendar.Styles';
 import BgImage from '../../Assets/Images/background_edit.png';
 import { setShowEventModel } from '../../redux/features/modalSlice';
+import { getTime } from '../../util';
+import { getCalendarEvent } from '../../redux/features/calendarSlice';
 
 const Month = ({ month }) => {
   const dispatch = useDispatch();
   const { monthNumber } = useSelector((state) => state.month);
+  const { months } = useSelector((state) => state.calendar);
   let dateFormated = dayjs(new Date(dayjs().year(), monthNumber)).format(
     'YYYY MMMM'
   );
@@ -26,6 +29,11 @@ const Month = ({ month }) => {
   const handleEvent = (date) => {
     dispatch(setSelectedDate(date));
     dispatch(setShowEventModel(true));
+    dispatch(setStartTime(getTime()));
+  };
+
+  const handleEventEdit = (event) => {
+    dispatch(getCalendarEvent(event));
   };
   return (
     <React.Fragment>
@@ -62,7 +70,13 @@ const Month = ({ month }) => {
           {month.map((row, id) => (
             <React.Fragment key={id}>
               {row.map((day, idx) => (
-                <Day day={day} key={idx} func={handleEvent} />
+                <Day
+                  day={day}
+                  key={idx}
+                  func={handleEvent}
+                  months={months}
+                  funcEvent={handleEventEdit}
+                />
               ))}
             </React.Fragment>
           ))}

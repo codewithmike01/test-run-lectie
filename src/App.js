@@ -14,13 +14,12 @@ import SideBar from './components/calendarComponent/SideBar';
 import Month from './components/calendarComponent/Month';
 import dayjs from 'dayjs';
 
-import FinancialCalendar from './components/coverClaendar/FinancialCalendar';
-
 function App() {
   const dispatch = useDispatch();
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const { monthNumber } = useSelector((state) => state.month);
   const { showEvent } = useSelector((state) => state.calendarModal);
+  const { selectedEvent } = useSelector((state) => state.calendar);
   let month = parseInt(dayjs().month());
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function App() {
 
   return (
     <>
-      {showEvent && <EventModal />}
+      {showEvent && <EventModal editOption={selectedEvent ? true : false} />}
       <CalendarMainConatiner>
         <CalendarHeader />
         <CalendarWrapper>

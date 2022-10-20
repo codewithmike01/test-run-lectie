@@ -160,7 +160,28 @@ export const DayContainer = styled.div`
   border: 1px solid ${lightGray};
   display: flex;
   flex-direction: column;
-
+  .event-tag {
+    width: 100%;
+    gap: 6px;
+    padding: 2px 0 -2px 2px;
+    border-radius: 4px;
+    &:hover {
+      background-color: #f1f3f4;
+      cursor: pointer;
+    }
+    .event {
+      font-size: 0.65rem;
+      margin-bottom: 4px;
+      width: 100%;
+    }
+    .event-color {
+      display: block;
+      width: 0.3375rem;
+      height: 0.3375rem;
+      border-radius: 50%;
+      margin-top: -4px;
+    }
+  }
   .day {
     padding-bottom: 25px;
     margin: 0.57rem auto;
@@ -175,15 +196,16 @@ export const MonthContainer = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-auto-rows: minmax(100px, auto);
+
   flex: 1;
   width: 100%;
 
   .down {
-    width: 2.1875rem;
-    height: 2.1875rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 50%;
     margin: 10px auto;
-    padding: 9px;
+    padding: 3px 0px 0px 3px;
 
     &:hover {
       background-color: #f1f3f4;
@@ -194,11 +216,11 @@ export const MonthContainer = styled.div`
   .highlight {
     background-color: #1a73e8;
     color: #fff;
-    width: 2.1875rem;
-    height: 2.1875rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 50%;
     margin: 10px auto;
-    padding: 9px;
+    padding: 3px 0px 0px 3px;
     cursor: pointer;
   }
   .day-month {
@@ -333,15 +355,24 @@ export const EventWrapper = styled.div`
   -webkit-box-shadow: 2px 15px 46px 6px rgba(0, 0, 0, 0.29);
   -moz-box-shadow: 2px 15px 46px 6px rgba(0, 0, 0, 0.29);
   header {
+    gap: 20px;
     padding: 8px 1.25rem;
     border-radius: 4px;
     justify-content: flex-end;
     background-color: ${buttonBlueColor};
+
+    svg {
+      color: #fff;
+      font-size: 1rem;
+      opacity: 0.8;
+      cursor: pointer;
+    }
     button {
       background-color: transparent;
       border: none;
       color: #fff;
       cursor: pointer;
+      padding-top: 3px;
     }
   }
 
@@ -400,6 +431,16 @@ export const EventWrapper = styled.div`
       padding: 5px;
       width: 100%;
     }
+
+    .text-area {
+      width: calc(100% + 30px);
+      padding: 10px;
+      font-size: 0.8rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
   .hovDescription:hover {
     background-color: #f1f3f4;
@@ -427,6 +468,19 @@ export const EventWrapper = styled.div`
       height: 1.55rem;
       border-radius: 50%;
       cursor: pointer;
+
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #fff;
+      }
     }
   }
 `;

@@ -9,6 +9,7 @@ const initialState = {
 const timeSlice = createSlice({
   name: 'startEventModal',
   initialState,
+
   reducers: {
     setStartTime: (state, { payload }) => {
       state.startTime = payload;

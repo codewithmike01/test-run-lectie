@@ -31,7 +31,7 @@ const SmallCalendar = ({ currentMonth, smallMonthNumber }) => {
               type="button"
               onClick={() => {
                 setSmallCurrentMonth(smallMonthNumber);
-                smallDispatch(setSelectedDate(day.format('dddd MMMM DD')));
+                smallDispatch(setSelectedDate(day));
               }}
               className={
                 getDay(day, selectedDate) === true

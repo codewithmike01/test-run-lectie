@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import uuid from 'react-uuid';
 import { IoAttach } from 'react-icons/io5';
 import { useSelector, useDispatch } from 'react-redux';
-import { FiClock } from 'react-icons/fi';
+import { FiClock, FiCheck } from 'react-icons/fi';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
 import ButtonColoured from '../utils/utilComponents/ButtonColored';
-import Editor from '../utils/utilComponents/Editor';
 import TimeModal from './TimeModal';
-import { setShowTimeModel } from '../../redux/features/modalSlice';
+import {
+  setShowEventModel,
+  setShowTimeModel,
+} from '../../redux/features/modalSlice';
+import {
+  setCalendarEvent,
+  setSelectedEvent,
+} from '../../redux/features/calendarSlice';
 import { colorArr } from './service/colorService';
 import dayjs from 'dayjs';
+import { setEndTime, setStartTime } from '../../redux/features/timeSlice';
 
 const EventForm = () => {
   const dispatch = useDispatch();
@@ -17,18 +25,36 @@ const EventForm = () => {
     (state) => state.startEventModal
   );
   const { showTime } = useSelector((state) => state.calendarModal);
+  const { selectedEvent } = useSelector((state) => state.calendar);
+
   const [showEditor, setShowEditor] = useState(false);
 
-  const [timeClicked, setTimClicked] = useState(null);
+  const [timeClicked, setTimeClicked] = useState(null);
 
   // Form values
   const [title, setTitle] = useState('');
-  const [firstTime, setFirstTime] = useState(startTime);
-  const [lastTime, setLastTime] = useState(endTime);
-  const [color, setColor] = useState('');
+  const [firstTime, setFirstTime] = useState('');
+  const [lastTime, setLastTime] = useState('');
+  const [colored, setColor] = useState(colorArr[0]['color']);
+  const [description, setDescription] = useState('');
   const [date, setDate] = useState(
     selectedDate || dayjs().format('dddd MMMM DD')
   );
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    if (selectedEvent !== '') {
+      setTitle(selectedEvent['title']);
+      setFirstTime(selectedEvent['startTime']);
+      setLastTime(selectedEvent['endTime']);
+      setDescription(selectedEvent['description']);
+      setColor(selectedEvent['color']);
+      setId(selectedEvent['id']);
+      dispatch(setStartTime(selectedEvent['startTime']));
+      dispatch(setEndTime(selectedEvent['endTime']));
+    } else setId('');
+    dispatch(setSelectedEvent(''));
+  }, []);
 
   useEffect(() => {
     setFirstTime(startTime);
@@ -36,19 +62,48 @@ const EventForm = () => {
   }, [startTime, endTime]);
 
   const handleSubmit = (e) => {
-    e.target.preventDefault();
-    console.log('submit clicked');
+    e.preventDefault();
+    const idx = id !== '' ? id : uuid();
+
+    const eventObj = {
+      date: selectedDate.format('YYYY-M'),
+      background: 'test',
+      events: [
+        {
+          id: idx,
+          title: title,
+          startDate: date,
+          endDate: 'null',
+          startTime: firstTime,
+          endTime: lastTime,
+          description: description,
+          link: 'unknown',
+          color: colored,
+        },
+      ],
+    };
+    dispatch(setCalendarEvent(eventObj));
+    dispatch(setShowEventModel(false));
   };
+
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         name="event-title"
-        value={null}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="Add Title"
         required
       />
-
+      <input
+        type="text"
+        value={id}
+        placeholder="no id"
+        onChange={() => ''}
+        className="hideInput"
+        hidden
+      />
       <div className="time-date flex">
         <FiClock />
         <div className="time-date-input flex flex-col">
@@ -56,8 +111,9 @@ const EventForm = () => {
             className="event-date"
             type="text"
             name="event-date"
-            value={date}
+            value={date.format('dddd MMMM DD')}
             placeholder="Add Date"
+            onChange={(e) => setDate(e.target.value)}
             required
           />
           <div className="time-container flex ">
@@ -68,8 +124,9 @@ const EventForm = () => {
               value={firstTime}
               placeholder="Start Time"
               typeof="button"
+              onChange={(e) => setFirstTime(e.target.value)}
               onClick={() => {
-                setTimClicked('start-time');
+                setTimeClicked('start-time');
                 dispatch(setShowTimeModel(true));
               }}
               required
@@ -80,8 +137,9 @@ const EventForm = () => {
               name="event-start-time"
               value={lastTime}
               placeholder="End Time"
+              onChange={(e) => setLastTime(e.target.value)}
               onClick={() => {
-                setTimClicked('end-time');
+                setTimeClicked('end-time');
                 dispatch(setShowTimeModel(true));
               }}
               required
@@ -102,7 +160,16 @@ const EventForm = () => {
             Add description
           </p>
         )}
-        {showEditor && <Editor />}
+        {showEditor && (
+          <div>
+            <textarea
+              placeholder="Add description"
+              className="text-area"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        )}
       </div>
 
       <div className="add-image flex a-center">
@@ -115,11 +182,11 @@ const EventForm = () => {
           <div
             style={{ backgroundColor: color }}
             key={id}
-            className="colors"
+            className="flex colors"
             typeof="button"
-            onClick={() => setColor({ color })}
+            onClick={() => setColor(color)}
           >
-            {' '}
+            {color === colored && <FiCheck />}
           </div>
         ))}
       </div>
