@@ -16,6 +16,9 @@ import { FiX } from 'react-icons/fi';
 
 const CalendarHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
   return (
     <CalendarHeaderContainer className="flex j-btw a-center" show={showMenu}>
       <div className="left-side-header flex a-center">
@@ -53,19 +56,19 @@ const CalendarHeader = () => {
 
       <div className="nav-mobile">
         <div className="links">
-          <Link to="#">
+          <Link to="#" onClick={() => closeMenu()}>
             <img src={WalletLogo} alt="wallet logo" />
           </Link>
-          <Link to="#">
+          <Link to="#" onClick={() => closeMenu()}>
             <img src={ProfileLogo} alt="wallet logo" />
           </Link>
-          <Link to="#">
+          <Link to="#" onClick={() => closeMenu()}>
             <img src={SettingLogo} alt="wallet logo" />
           </Link>
-          <Link to="#">
+          <Link to="#" onClick={() => closeMenu()}>
             <img src={ChatLogo} alt="wallet logo" />
           </Link>
-          <Link to="#">
+          <Link to="#" onClick={() => closeMenu()}>
             <img src={QuestionLogo} alt="wallet logo" />
           </Link>
         </div>

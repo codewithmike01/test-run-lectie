@@ -190,8 +190,7 @@ export const CalendarHeaderContainer = styled.header`
 
     .right-side-header {
       .icon {
-        width: 25px;
-        height: 25px;
+        display: none;
       }
       .profile-image {
         width: 45px;
