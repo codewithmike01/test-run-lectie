@@ -145,7 +145,7 @@ export const CalendarHeaderContainer = styled.header`
       align-items: center;
       position: absolute;
       width: 70px;
-      height: 1476px;
+      height: 1320px;
       left: 0px;
       top: 72px;
       background: #2667b1;
@@ -175,7 +175,14 @@ export const CalendarHeaderContainer = styled.header`
         display: flex;
         gap: 1.25rem;
 
+        .cancel {
+          width: 32px;
+          height: 32px;
+          display: ${({ show }) => (show ? 'flex' : 'none')};
+        }
+
         .menu {
+          display: ${({ show }) => (show ? 'none' : 'flex')};
           cursor: pointer;
         }
       }

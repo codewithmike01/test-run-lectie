@@ -12,6 +12,7 @@ import ProfileLogo from '../../Assets/Images/profile-logo.svg';
 import SettingLogo from '../../Assets/Images/setting-logo.svg';
 import ChatLogo from '../../Assets/Images/chat-logo.svg';
 import QuestionLogo from '../../Assets/Images/question-logo.svg';
+import { FiX } from 'react-icons/fi';
 
 const CalendarHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -25,7 +26,12 @@ const CalendarHeader = () => {
             alt="menu"
             className="menu"
             typeof="button"
-            onClick={() => setShowMenu((prevState) => !prevState)}
+            onClick={() => setShowMenu(true)}
+          />
+          <FiX
+            className="cancel"
+            typeof="button"
+            onClick={() => setShowMenu(false)}
           />
           <img src={LogoMobile} alt="small logo" />
         </div>
