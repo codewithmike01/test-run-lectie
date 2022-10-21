@@ -111,7 +111,13 @@ const EventForm = () => {
             className="event-date"
             type="text"
             name="event-date"
-            value={date.format('dddd MMMM DD')}
+            value={
+              typeof date === 'object'
+                ? date.format('dddd MMMM DD')
+                : date.includes('000Z')
+                ? dayjs(new Date(date)).format('DD MM')
+                : date.format('DD MM')
+            }
             placeholder="Add Date"
             onChange={(e) => setDate(e.target.value)}
             required

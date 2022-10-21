@@ -1,12 +1,30 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import { getDay } from '../../util';
 import { DayContainer } from './styles/calendar.Styles';
 
 const Day = ({ day, func, months, funcEvent }) => {
   let allEvent = [];
+  let newEvent = [];
   for (const month of months) {
     for (let i = 0; i < month['events'].length; i++) {
       allEvent.push(month['events'][i]);
+    }
+  }
+
+  newEvent = JSON.parse(JSON.stringify(allEvent));
+
+  if (newEvent.length > 0) {
+    for (const event of newEvent) {
+      if (typeof event['startDate'] !== 'object') {
+        if (event['startDate'].includes('000Z')) {
+          event['startDate'] = dayjs(new Date(event['startDate'])).format(
+            'DD MM'
+          );
+        }
+      } else if (typeof event['startDate'] === 'object') {
+        event['startDate'] = event['startDate'].format('DD MM');
+      }
     }
   }
 
@@ -21,9 +39,9 @@ const Day = ({ day, func, months, funcEvent }) => {
           {day.format('DD')}
         </p>
 
-        {allEvent.map((evt, i) => {
+        {newEvent.map((evt, i) => {
           return (
-            evt['startDate'].format('DD MM') === day.format('DD MM') && (
+            evt['startDate'] === day.format('DD MM') && (
               <div className=" flex event-tag a-center" key={i}>
                 <span
                   className="event-color"
@@ -47,14 +65,3 @@ const Day = ({ day, func, months, funcEvent }) => {
 };
 
 export default Day;
-// <div className=" flex event-tag a-center" key={i}>
-// <span className="event-color"></span>
-// <p className="event t-sm">Hello</p>
-// </div>
-
-// dayEvent[0]['date'].format('DD MM') === day.format('DD MM') && (
-//   <div className=" flex event-tag a-center">
-//     <span className="event-color"></span>
-//     <p className="event t-sm">Hello</p>
-//     <p>{evt}</p>
-//   </div>

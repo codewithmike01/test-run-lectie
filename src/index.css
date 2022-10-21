@@ -97,7 +97,7 @@ p {
 }
 
 /* Media Query */
-@media screen and (max-width: 586px) {
+/* @media screen and (max-width: 586px) {
   html {
     font-size: calc(9px + 0.390625vw);
   }
@@ -107,4 +107,4 @@ p {
   html {
     font-size: calc(8.5px + 0.390625vw);
   }
-}
+} */

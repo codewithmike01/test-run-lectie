@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   buttonBlueColor,
   lightGray,
-  primaryColor,
 } from '../../globalStyles/globalStyles.styles';
 
 export const CalendarMainConatiner = styled.div`
@@ -13,7 +12,8 @@ export const CalendarMainConatiner = styled.div`
 `;
 
 export const CalendarWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   flex: 1;
   gap: 2.4rem;
   justify-content: space-between;
@@ -74,10 +74,13 @@ export const CalendarWrapper = styled.div`
       font-size: 1.25rem;
     }
   }
-
-  @media screen and (max-width: 587px) {
-    gap: 0;
-    width: 99%;
+  @media screen and (max-width: 786px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  @media screen and (max-width: 597px) {
+    gap: 2rem;
+    width: 89%;
   }
 `;
 
@@ -85,12 +88,18 @@ export const CalendarHeaderContainer = styled.header`
   max-width: 100vw;
   padding: 10px 2.5rem;
   margin-bottom: 1rem;
-  background-color: ${primaryColor};
-
+  background-color: ${buttonBlueColor};
+  position: relative;
   color: #fff;
+  .nav-mobile {
+    display: none;
+  }
 
   .left-side-header {
     gap: 2rem;
+    .mobile-menu {
+      display: none;
+    }
   }
 
   .date-time {
@@ -130,6 +139,48 @@ export const CalendarHeaderContainer = styled.header`
   }
 
   @media screen and (max-width: 586px) {
+    .nav-mobile {
+      display: ${({ show }) => (show ? 'flex' : 'none')};
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      width: 70px;
+      height: 1476px;
+      left: 0px;
+      top: 72px;
+      background: #2667b1;
+      border-radius: 0px 8px 0px 0px;
+      padding: 2.8125rem 1.1875rem 1rem 0.8125rem;
+      z-index: 2;
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .date-time {
+      display: none;
+    }
+
+    .left-side-header {
+      h5 {
+        display: none;
+      }
+      .mobile-menu {
+        display: flex;
+        gap: 1.25rem;
+
+        .menu {
+          cursor: pointer;
+        }
+      }
+    }
+
     .right-side-header {
       .icon {
         width: 25px;
@@ -190,14 +241,25 @@ export const DayContainer = styled.div`
   }
 `;
 
-export const RightSideCalendarContainer = styled.div``;
+export const RightSideCalendarContainer = styled.div`
+  .date-show-small-screen {
+    display: none;
+  }
+
+  @media screen and (max-width: 786px) {
+    .date-show-small-screen {
+      display: inline-block;
+    }
+  }
+`;
 export const MonthContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 120px);
   grid-auto-rows: minmax(100px, auto);
 
   flex: 1;
+  max-width: 1400px;
   width: 100%;
 
   .down {
@@ -232,9 +294,12 @@ export const SideBarConatainer = styled.aside`
   padding: 1rem;
   padding-top: 0px;
 
-  max-width: 100%;
+  /* width: 10%; */
   position: relative;
 
+  .preview {
+    width: 120px;
+  }
   .month-move {
     padding-top: 10px;
     width: 100%;
@@ -249,33 +314,81 @@ export const SideBarConatainer = styled.aside`
     }
   }
 
-  .add-event {
-    margin-top: 2rem;
-    gap: 1.5rem;
+  .check-event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    p {
+      font-size: 0.9rem;
+    }
+    .check-event {
+      gap: 1.5rem;
 
-    .instruct {
-      gap: 0.75rem;
-      .check {
-        width: 25px;
-        height: 25px;
-        border: 2px solid #2a2a2a;
-        opacity: 0.32;
+      input[type='checkbox'] {
+        transform: scale(1.6);
       }
-      .model {
+      .instruct {
+        gap: 0.75rem;
+
+        .model {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .image-cover {
+    display: flex;
+    gap: 20px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    .img-container {
+      max-width: 137px;
+      height: 80px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        border: none;
+        width: 180px;
+        height: 40px;
+        background: #2667b1;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.9rem;
         cursor: pointer;
       }
     }
   }
 
-  @media screen and (max-width: 586px) {
-    padding: 0.5rem;
+  @media screen and (max-width: 786px) {
+    flex-direction: column-reverse;
 
-    .instruct {
-      .check {
-        width: 20px;
-        height: 20px;
+    .month-move {
+      display: none;
+    }
+
+    .preview {
+      width: 150px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 1.3rem;
+      button {
+        width: 100%;
+        height: 100%;
       }
     }
+  }
+
+  @media screen and (max-width: 596px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -318,6 +431,10 @@ export const SmallCalendarConatiner = styled.div`
     background-color: #d2e3fc;
     color: #185abc;
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 786px) {
+    display: none;
   }
 
   @media screen and (max-width: 586px) {

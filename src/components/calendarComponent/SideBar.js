@@ -15,6 +15,7 @@ import { buttonBlueColor } from '../globalStyles/globalStyles.styles';
 import SmallCalendar from './SmallCalendar';
 import { setSmallMonthNumber } from '../../redux/features/smallMonthSlice';
 import { setShowEventModel } from '../../redux/features/modalSlice';
+import CoverBack from '../../Assets/Images/background_edit.png';
 
 const SideBar = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -36,41 +37,87 @@ const SideBar = () => {
   }, [smallMonthNumber]);
 
   return (
-    <SideBarConatainer>
-      <ButtonColoured content={'Preview'} color={buttonBlueColor} />
-      <div className="month-move flex a-center">
-        <Button
-          content={<FiChevronLeft />}
-          func={() => smallDispatch(setPrevSmallMonthNumber())}
-        />
-        <p className="t-sm">{dateFormated.split(' ')[1]}</p>
-        <p className="t-sm">{dateFormated.split(' ')[0]}</p>
-        <Button
-          content={<FiChevronRight />}
-          func={() => smallDispatch(setNextSmallMonthNumber())}
+    <SideBarConatainer className="flex flex-col">
+      <div className="preview">
+        <ButtonColoured content={'Preview'} color={buttonBlueColor} />
+      </div>
+
+      <div>
+        <div className="month-move flex a-center">
+          <Button
+            content={<FiChevronLeft />}
+            func={() => smallDispatch(setPrevSmallMonthNumber())}
+          />
+          <p className="t-sm">{dateFormated.split(' ')[1]}</p>
+          <p className="t-sm">{dateFormated.split(' ')[0]}</p>
+          <Button
+            content={<FiChevronRight />}
+            func={() => smallDispatch(setNextSmallMonthNumber())}
+          />
+        </div>
+        <SmallCalendar
+          currentMonth={currentMonth}
+          smallMonthNumber={smallMonthNumber}
         />
       </div>
-      <SmallCalendar
-        currentMonth={currentMonth}
-        smallMonthNumber={smallMonthNumber}
-      />
+      <div className="label-coverimage">
+        <div className="check-event-container">
+          <div className="check-event flex a-center">
+            <div className="flex instruct a-center">
+              <input type="checkbox" name="public" />
+              <p className="model t-sm" typeof="button">
+                Public Holiday
+              </p>
+            </div>
+            <p className="t-sm bold">Edit</p>{' '}
+          </div>
 
-      <div className="add-event flex a-center">
-        <div className="flex instruct a-center">
-          <div className="check"></div>
+          <div className="check-event flex a-center">
+            <div className="flex instruct a-center">
+              <input type="checkbox" name="add-event" />
+              <p
+                className="model t-sm"
+                typeof="button"
+                onClick={() => {
+                  smallDispatch(setShowEventModel(true));
+                  smallDispatch(setStartTime(getTime()));
+                }}
+              >
+                Add Event
+              </p>
+            </div>
+            <p className="t-sm bold">Edit</p>{' '}
+          </div>
 
-          <p
-            className="model t-sm"
-            typeof="button"
-            onClick={() => {
-              smallDispatch(setShowEventModel(true));
-              smallDispatch(setStartTime(getTime()));
-            }}
-          >
-            Add Event
-          </p>
+          <div className="check-event flex a-center">
+            <div className="flex instruct a-center">
+              <input type="checkbox" name="add-event-image" />
+              <p className="model t-sm" typeof="button">
+                Add Event Image
+              </p>
+            </div>
+            <p className="t-sm bold">Edit</p>{' '}
+          </div>
+
+          <div className="check-event flex a-center">
+            <div className="flex instruct a-center">
+              <input type="checkbox" name="add-month-image" />
+              <p className="model t-sm" typeof="button">
+                Add Month cover image
+              </p>
+            </div>
+            <p className="t-sm bold">Edit</p>{' '}
+          </div>
         </div>
-        <p className="t-sm bold">Edit</p>{' '}
+
+        <div className="image-cover">
+          <div className="img-container">
+            <img src={CoverBack} alt="Cover letter" />
+          </div>
+          <div className="button-container">
+            <button> Change cover image </button>
+          </div>
+        </div>
       </div>
     </SideBarConatainer>
   );

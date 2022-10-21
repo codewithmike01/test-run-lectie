@@ -47,12 +47,16 @@ const Month = ({ month }) => {
             <FiEdit />
           </p>
         </div>
+
         <div className="month-inc-dec flex a-center">
           <Button
             content={<FiChevronLeft />}
             func={() => dispatch(setPrevMonthNumber())}
           />
           <p className="t-sm">{dateFormated.split(' ')[1]}</p>
+          <p className="t-sm date-show-small-screen">
+            {dateFormated.split(' ')[0]}
+          </p>
           <Button
             content={<FiChevronRight />}
             func={() => dispatch(setNextMonthNumber())}
